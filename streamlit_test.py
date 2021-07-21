@@ -1,18 +1,23 @@
 import datetime as datatime
-
 import numpy as np
 import pandas as pd
 import pandas_datareader as pdr
 import streamlit as st
+# import matplotlib.pyplot as plt
+# import matplotlib.style
 
-brand = '6857.JP'
-test = pdr.DataReader(brand,'stooq','2021-06-01','2021-06-30')
+# matplotlib.style.use('ggplt')
 
-dftest = pd.DataFrame(test) 
-dftest.head
+start = '2021-06-01'
+end   = '2021-07-30'
 
-st.title('株価データ')
-st.write(dftest)
+_nikkei = pdr.DataReader('^NKX','stooq',start,end)
+nikkei = pd.DataFrame(_nikkei.iloc[:,3])
+nikkei.columns = ['^NKX',]
+
+st.title('日経平均')
+st.write(nikkei)
+st.line_chart(nikkei)
 
 
 # stooq = StooqDailyReader(brand, start=start, end=end)
