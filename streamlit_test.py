@@ -9,7 +9,7 @@ import streamlit as st
 # matplotlib.style.use('ggplt')
 
 start = '2021-06-01'
-end   = '2021-07-30'
+end   = '2021-10-30'
 
 _nikkei = pdr.DataReader('^NKX','stooq',start,end)
 nikkei = pd.DataFrame(_nikkei.iloc[:,3])
